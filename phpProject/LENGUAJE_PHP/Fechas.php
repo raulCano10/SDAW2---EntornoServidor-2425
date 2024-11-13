@@ -100,7 +100,18 @@
         echo "</pre>";
         echo $hoy["weekday"];
 
+        echo "<br>";
         $locale = 'es_ES.UTF-8';
+        $fmt = new IntlDateFormatter($locale,IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+
+        $date = new DateTime('2024-11-10');
+        echo "LOCALE en_Us.UTF-8 " .$fmt->format($date);
+        echo "<br>";
+        $locale2 = 'en_Us.UTF-8';
+        $fmt2 = new IntlDateFormatter($locale2,IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+
+        $date = new DateTime('2024-11-10');
+        echo "LOCALE en_Us.UTF-8 " . $fmt2->format($date);
 
     ?>
 </body>
