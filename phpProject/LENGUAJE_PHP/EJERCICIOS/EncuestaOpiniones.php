@@ -18,12 +18,13 @@
             Calidad del servicio 
 	    	    Excelente - 0, 
 	    	    Bueno - 0 
-	    	    Regular - 0 Malo - 0
+	    	    Regular - 0 
+                Malo - 0
             Precio 
 		        Barato 0
 		        Razonable 0
 		        Caro 0
-
+                
         1. Crea una función votar que reciba el tema y la respuesta seleccionada, 
 	        y actualice el número de votos en el array. Usa estructuras de control para verificar que el tema 
             y la respuesta sean válidos.
@@ -31,6 +32,13 @@
         3. Usa estructuras de control para destacar el tema con más votos en cualquier respuesta y el que 
         tenga menos participación.
         */
+        votar($Opiniones,"Calidad del servicio","Excelente");
+        votar($Opiniones,"Calidad del servicio","Bueno");
+        votar($Opiniones,"Calidad del servicio","Bueno");
+        votar($Opiniones,"Calidad del servicio","Malo");
+        votar($Opiniones,"Precio","Caro");
+        votar($Opiniones,"Precio","Caro");
+        votar($Opiniones,"Precio","Barato");
     ?>
 </body>
 </html>

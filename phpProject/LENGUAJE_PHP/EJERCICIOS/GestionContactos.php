@@ -29,7 +29,7 @@
         */
 
         $contactos =[
-            "Juan Perez" => ["telefono" => "658447744", "email" => "juan.perez@gmail.com"],
+            "Juan Perez" => ["telefono" => "658", "email" => "juan.perez@gmail.com"],
             "Ana Gómez" => ["telefono" => "854221122", "email" => "ana@gmail.com"]
         ];
 
@@ -78,14 +78,42 @@
         function EliminarContacto(&$contactos, $nombre){
             if(isset($contactos[$nombre])){
                 unset($contactos[$nombre]);
-                echo "Error: El contacto $nombre se ha borrado con éxito<br>";
+                echo "El contacto $nombre se ha borrado con éxito<br>";
             }else{
                 echo "Error: El contacto $nombre no existe:<br>";
             }
         }
 
-        
+        function mostrarContactosOrdenadosAlfabeticamente($contactos){
+            ksort($contactos);
+            echo "<h3>Lista de Contactos</h3>";
+            foreach($contactos as $nombre => $informacion){
 
+            $telefonoNovalido = strlen($informacion["telefono"]) == 9 ? "" : "(Teléfono NO VALIDO)";
+
+            echo $nombre . "Telefono: ".  $informacion["telefono"] . $telefonoNovalido . " , Email: "
+            . $informacion["email"] . " <br>";
+
+            }
+        }
+
+
+        //Agrega 3 contactos
+        //Elimina 1 contacto de los 3 agrados anteriormente
+        //Busca el contacto Ana y printa la informacion por pantalla
+        //Buscar un contacto que no existe e indicarlo por pantalla
+        //mustra todos contactos segun indica el punto 5
+
+        agregarContacto($contactos,"Raul", "77778888","raul@gmail.com");
+        agregarContacto($contactos,"Manolo", "444455556","monolo@gmail.com");
+        agregarContacto($contactos,"pepe", "88881111","pepe@gmail.com");
+        EliminarContacto($contactos,"pepe");
+        buscarContacto($contactos,"Ana");
+        buscarContacto($contactos,"HolaComoEstas");
+        mostrarContactosOrdenadosAlfabeticamente($contactos);
+
+
+        
 
     ?>
 </body>
