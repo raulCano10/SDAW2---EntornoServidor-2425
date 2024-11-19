@@ -34,6 +34,54 @@
         Muestra el inventario en un formato limpio y legible.
 
         */
+		
+		 // Definición del array asociativo para el inventario
+        $inventario = [
+            "manzana" => ["precio" => 0.5, "cantidad" => 100],
+            "pan" => ["precio" => 1.2, "cantidad" => 50],
+            "leche" => ["precio" => 0.9, "cantidad" => 30]
+        ];
+
+        // Función para agregar o actualizar un producto en el inventario
+        function agregarProducto(&$inventario, $producto, $precio, $cantidad) {
+            if (isset($inventario[$producto])) {
+                $inventario[$producto]["cantidad"] += $cantidad; // Actualizar cantidad
+            } else {
+                $inventario[$producto] = ["precio" => $precio, "cantidad" => $cantidad]; // Agregar nuevo producto
+            }
+            echo "Producto \"$producto\" agregado/actualizado con éxito.<br>";
+        }
+
+        // Función para comprar un producto
+        function comprarProducto(&$inventario, $producto, $cantidad) {
+            if (!isset($inventario[$producto])) {
+                echo "Error: El producto \"$producto\" no existe en el inventario.<br>";
+                return;
+            }
+            if ($inventario[$producto]["cantidad"] < $cantidad) {
+                echo "Error: No hay suficiente stock de \"$producto\".<br>";
+                return;
+            }
+            $costoTotal = $inventario[$producto]["precio"] * $cantidad;
+            $inventario[$producto]["cantidad"] -= $cantidad; // Descontar cantidad
+            echo "Has comprado $cantidad unidades de \"$producto\" por un total de $$costoTotal.<br>";
+        }
+
+        // Función para mostrar el inventario y resaltar productos con bajo stock
+        function mostrarInventario($inventario) {
+            echo "<h3>Inventario de la Tienda:</h3>";
+            foreach ($inventario as $producto => $info) {
+                $estado = ($info["cantidad"] < 10) ? " (¡Stock bajo!)" : "";
+                echo "$producto - Precio: $" . $info["precio"] . ", Cantidad: " . $info["cantidad"] . "$estado<br>";
+            }
+        }
+
+        // Pruebas de las funciones
+        agregarProducto($inventario, "manzana", 0.5, 50); // Actualizar stock de manzanas
+        agregarProducto($inventario, "queso", 2.5, 15); // Agregar un nuevo producto
+        comprarProducto($inventario, "pan", 10); // Comprar pan
+        comprarProducto($inventario, "leche", 35); // Intentar comprar más leche de la disponible
+        mostrarInventario($inventario); // Mostrar el inventario actualizado
     ?>
 </body>
 </html>

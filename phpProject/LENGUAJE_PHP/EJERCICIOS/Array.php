@@ -158,6 +158,8 @@
         foreach ($paises as $pais => $capital) {
             echo "La capital de {$pais} es {$capital} <br>";
         }
+		
+		
 
     ?>
 </body>
