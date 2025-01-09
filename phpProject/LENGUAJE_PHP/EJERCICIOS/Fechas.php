@@ -79,65 +79,83 @@
             echo "No es bisiesto <br>";
         }
 
-        //7. Dada la fecha de tu cumpleaños, calcular la edad.
-        $fecha_nacimiento = "1990-03-12";  // Fecha de nacimiento en formato "año-mes-día"
-        $fecha_nacimiento = date_create("1990-03-12");  // Crea el objeto DateTime para la fecha de nacimiento
-        $fecha_actual = date_create("today");  // Crea el objeto DateTime para la fecha actual
-        $diferencia = date_diff($fecha_nacimiento, $fecha_actual);  // Calcula la diferencia entre ambas fechas
-        $edad = $diferencia->y;  // Obtiene los años completos de diferencia
-        echo "Edad: " . $edad . " años.<br>";
+        //Dada la fecha de tu cumpleaños calcula la edad que tienes.
+        $fechaCumple2 = new DateTime("04-10-1981 08:20:04");
+        $fechaCumple3 = date_create("04-10-1981");
 
-        //8. Dada una fecha, validar si está dentro de un rango de años. (Utiliza la función explode()).
-        $fecha = "2018-06-15"; // Fecha a validar
-        $rango_inferior = 2010;
-        $rango_superior = 2025;
+        $fechaDeHoy = date_create("today");
+
+        $diferenciaFechas = date_diff($fechaCumple2, $fechaDeHoy);
+
+        $aniosEntreFechas = $diferenciaFechas -> y;
+
+        echo "Tengo {$aniosEntreFechas} años. <br>";
+
+        //Dada una fecha 2020-05-10 validar si esta dentro de un rango de fechas
+        // Por ejemplo entre 2000 y 2024. utiliza la funcion explode()
+
+        $fechaCadena = "2020-05-10";
+        $fechaCadena = "05-10-2025";
+        $rangoInferior = 2020;
+        $rangoSuperior = 2024;
+
+        // $rangoInferior = "2020";
+        // $rangoSuperior = "2024";
+
+        $fecha_array = explode("-", $fechaCadena);
         
-        // Convertir la fecha a un array con explode
-        $fecha_array = explode("-", $fecha);
-        print_r($fecha_array);
-        $anio = (int)$fecha_array[0]; // Extraer el año
-        
-        if ($anio >= $rango_inferior && $anio <= $rango_superior) {
-            echo "La fecha está dentro del rango de años.";
-        } else {
-            echo "La fecha no está dentro del rango de años.";
+        if((int)$fecha_array[0] >= $rangoInferior && (int)$fecha_array[0] <= $rangoSuperior){
+            echo "La fecha está dentro del rango de años <br>";
+        }else{
+            echo "La fecha está fuera del rango de años <br>";
         }
 
-        //9. Dada una fecha de inicio y una fecha de fin, calcular el número de horas y minutos que hay entre una y otra. 
-        $inicio = "2024-11-10 08:00:00";
-        $fin = "2024-11-10 15:30:00";
-
-        $inicio_timestamp = strtotime($inicio);
-        $fin_timestamp = strtotime($fin);
-
-        // Calcular la diferencia en segundos
-        $diff_seconds = $fin_timestamp - $inicio_timestamp;
-
-        // Convertir a horas y minutos
-        $hours = floor($diff_seconds / 3600);
-        $minutes = floor(($diff_seconds % 3600) / 60);
-
-        echo "Diferencia: $hours horas y $minutes minutos.<br>";
         
-        //10. Inventar mini ejercicios en los que utilices las funciones de tipo FECHA
-        //Ejercicio 1: Calcular la fecha de hace 7 días
-        $hace_7_dias = date("Y-m-d", strtotime("-7 days"));
-        echo "Fecha de hace 7 días: " . $hace_7_dias . "<br>";
-        
-        //Calcular el primer día del mes siguiente
-        //https://www.php.net/manual/es/datetime.formats.relative.php      
-        $primer_dia_mes_siguiente = date("Y-m-01", strtotime("first day of next month"));
-        echo "Primer día del mes siguiente: " . $primer_dia_mes_siguiente . "<br>";
+    
+        $saludo = "Hola te estoy saludando y quiero que me trocees con un separador de espacios";
+        $saludo_array = explode(" ", $fechaCadena);
 
-        // Determinar si una fecha es un fin de semana
-        $fecha = "2024-11-09"; // Sábado
+        //Dada una fecha de inicio y una fecha de fin
+        //"2024-11-10 08:00:00" y "2024-11-10 15:30:00"
+        //Calcular el numero de horas y minutos entre una y otra
+        $fechaInicio = "2024-11-10 08:00:00";
+        $fechaFin = "2024-11-10 15:30:00";
 
-        $dia_semana = date("N", strtotime($fecha)); // 1 = lunes, 7 = domingo
+        $fechaInicio_timestamp = strtotime($fechaInicio);
+        $fechaFin_timestamp = strtotime($fechaFin);
 
-        if ($dia_semana == 6 || $dia_semana == 7) {
-            echo "La fecha $fecha es un fin de semana.<br>";
-        } else {
-            echo "La fecha $fecha no es un fin de semana.<br>";
+        //Convertimos a horas y minutos
+        $diferenciaFinInicio = $fechaFin_timestamp - $fechaInicio_timestamp;
+
+        $horas = $diferenciaFinInicio / 3600;
+        $minutos = $diferenciaFinInicio / 60;
+
+        echo "Diferencia de hora fin y hora incio son {$horas} horas y {$minutos} minutos. <br>";
+
+        //Calcular la fecha de hace 7 dias. Utilizar la funcion date()      
+        $fechaHace7Dias = date("Y-m-d",strtotime("-7 days"));       
+        echo "Hace siete dias la fecha era: " . $fechaHace7Dias . "<br>";
+       
+        //Calcular el primer dia del mes siguiente. Utilizar la funcion date() 
+        $primerDiaMesSiguiente = date("Y-m-d",strtotime("first day of next month"));       
+        echo "Primer dia del mes siguiente: " . $primerDiaMesSiguiente . "<br>";
+
+        //Determinar si una fecha cae en fin de semana. Utilizar la funcion date()
+        $fechaCualquiera = "2024-07-21";
+
+        ;
+        $dia_de_la_semana = date("l",strtotime($fechaCualquiera));
+        if(in_array(strtolower($dia_de_la_semana), ["saturday", "sunday"])){
+            echo "El dia {$fechaCualquiera} cae en fin de semana <br>";
+        }else{
+            echo "El dia {$fechaCualquiera} NO cae en fin de semana <br>";
+        }
+
+        $dia_de_la_semana = date("N",strtotime($fechaCualquiera));
+        if($dia_de_la_semana == 6 || $dia_de_la_semana == 7){
+            echo "El dia {$fechaCualquiera} cae en fin de semana <br>";
+        }else{
+            echo "El dia {$fechaCualquiera} NO cae en fin de semana <br>";
         }
 
     ?>

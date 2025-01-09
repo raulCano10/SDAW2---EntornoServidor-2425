@@ -90,141 +90,91 @@
         //      de la cadena original.
         $subcadena = substr($cadena,strpos($cadena,"es algo largo y detallarlo exaustivamente es costoso"));
         echo "La subcadena extraida es: " . $subcadena   . "<br>";
-		
-		/*
-    4. Dadas dos palabras en dos variables, indica si riman o no. Si coinciden las tres últimas letras 
-    tiene que decir que riman. Si coinciden sólo las dos últimas tiene que decir que riman un poco y 
-    si no, que no riman. Recuerda que las palabras rimarán independientemente de que se escriban 
-    con mayúsculas o minúsculas (funciones substr y strcasecmp).
-*/
-    // Variables con las dos palabras
-    $palabra1 = "canción";
-    $palabra2 = "emoción";
-
-    // Convertimos ambas palabras a minúsculas para evitar problemas con mayúsculas
-    $ultima_tres_palabra1 = substr($palabra1, -3);
-    $ultima_tres_palabra2 = substr($palabra2, -3);
-
-    //  if ($ultima_tres_palabra1 === $ultima_tres_palabra2) {
-    //      echo "Las palabras riman.";
-    //  } 
-
-    // Comparar las tres últimas letras
-    if (strcasecmp($ultima_tres_palabra1, $ultima_tres_palabra2) === 0) {
-        echo "Las palabras riman.<br>";
-    } else {
-        // Si no coinciden las tres últimas, probamos con las dos últimas
-        $ultima_dos_palabra1 = substr($palabra1, -2);
-        $ultima_dos_palabra2 = substr($palabra2, -2);
-
-        // if (strcasecmp($ultima_dos_palabra1, $ultima_dos_palabra2) === 0) {
-        //     echo "Las palabras riman un poco.";
-        // } else {
-        //     echo "Las palabras no riman.";
-        // }
-
-         if ($ultima_dos_palabra1 === $ultima_dos_palabra2) {
-             echo "Las palabras riman un poco.<br>";
-         } else {
-             echo "Las palabras no riman.<br>";
-         }
-    }
-/*
-    5. Permita chequear si una variable contiene una dirección de correo válida. Una dirección de 
-    correo válida debe tener presentes los caracteres ‘@’ y ‘.’ Si la dirección es válida escribe por 
-    un lado el nombre de usuario y por otro el dominio de dicha dirección.
-*/
-        $email = "alicia.cano@gmail.com";
-
-        if (strpos($email, '@') !== false && strpos($email, '.') !== false) {
-            // Encontrar la posición de '@'
-            $posicionArroba = strpos($email, '@');
         
-            // Extraer el nombre de usuario y dominio usando substr()
-            $usuario = substr($email, 0, $posicionArroba); // Desde el inicio hasta justo antes de '@'
-            $dominio = substr($email, $posicionArroba + 1); // Desde después de '@' hasta el final
-        
-            echo "Dirección de correo válida.<br>";
-            echo "Nombre de usuario: $usuario.<br>";
-            echo "Dominio: $dominio\n";
-        } else {
-            echo "Dirección de correo no válida.<br>";
-        }
 
-
-        $email = "example@example.com";
-
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "El correo electrónico es válido.<br>";
-        } else {
-            echo "El correo electrónico no es válido.<br>";
-        }
-
-        $numero = "123";
-
-        if (filter_var($numero, FILTER_VALIDATE_INT)) {
-            echo "Es un número entero válido.<br>";
-        } else {
-            echo "No es un número entero válido.<br>";
-        }
-
-        $cadena = "<h1>Hola Mundo!</h1>";
-        $cadenaLimpia = filter_var($cadena, FILTER_SANITIZE_STRING);
-        echo $cadenaLimpia;
+        //EJERCICIO 2
         /*
-        FILTER_SANITIZE_STRING elimina las etiquetas HTML y otros caracteres especiales de la cadena. 
-        (A partir de PHP 8.1, FILTER_SANITIZE_STRING está obsoleto).
+        Dadas dos palabras en dos variables, indica si riman o no riman.
+        Si coinciden las tres ultimas letras --> Riman!!
+        Si coinciden solo las dos ultimas tienes que indicar que riman un poco
+        En caso contrario No riman!!
+        Recuerda que las palabras riman independientemente de si estan en mayuscula 
+        o minuscula.
         */
 
-        $ip = "192.168.1.1";
+        $cadena1 = "Avioneta";
+        $cadena2 = "Furgoneta";
 
-        if (filter_var($ip, FILTER_VALIDATE_IP)) {
-            echo "La dirección IP es válida. <br>";
-        } else {
-            echo "La dirección IP no es válida.<br>";
+        $lasUltimasTresletras_cadena1 = substr($cadena1, -3);
+        $lasUltimasTresletras_cadena2 = substr($cadena2, -3);
+
+        if(strcasecmp($lasUltimasTresletras_cadena1, $lasUltimasTresletras_cadena2) == 0){
+            echo "Las palabras rimas <br>";
+        }else{
+            //Extraemos de la primera cadena las dos ultimas letras
+            $lasUltimasTresletras_cadena1 = substr($cadena1, -2);
+            //Extraemos de la segunda cadena las dos ultimas letras
+            $lasUltimasTresletras_cadena2 = substr($cadena2, -2);
+
+            if($lasUltimasTresletras_cadena1 === $lasUltimasTresletras_cadena2){
+                echo "Las palabras riman un poco <br>";
+            }else{
+                echo "Las palabras no riman <br>";
+            }
+
+            //Comparamos las ultimas dos letras de cada cadena. Ignoramos mayusculas y minusculas
+            if(strcasecmp($lasUltimasTresletras_cadena1, $lasUltimasTresletras_cadena2) == 0){
+                echo "Las palabras riman un poco <br>";
+            }else{
+                echo "Las palabras no riman <br>";
+            }
+           
         }
 
-        $numero = "200";
-
-        // Validar si el número está dentro de un rango específico
-        $options = [
-            "options" => [
-                "min_range" => 1,
-                "max_range" => 100
-            ]
-        ];
-       
-        if (filter_var($numero, FILTER_VALIDATE_INT, $options)) {
-            echo "El número está en el rango permitido.<br>";
-        } else {
-            echo "El número no está en el rango permitido.<br>";
-        }    
-
-        /*
-            FILTER_VALIDATE_EMAIL: Valida correos electrónicos.
-            FILTER_VALIDATE_URL: Valida URLs.
-            FILTER_VALIDATE_INT: Valida números enteros.
-            FILTER_VALIDATE_FLOAT: Valida números de coma flotante.
-            FILTER_VALIDATE_IP: Valida direcciones IP.
-            FILTER_SANITIZE_STRING: Sanitiza cadenas (obsoleto en PHP 8.1+).
-            FILTER_SANITIZE_EMAIL: Sanitiza una dirección de correo electrónico.
-            FILTER_SANITIZE_URL: Sanitiza una URL.
-        */
-
-        $cadena = "<h1>Hola Mundo!</h1>";
-        $cadenaSanitizada = filter_var($cadena, FILTER_SANITIZE_STRING);
-        echo $cadenaSanitizada . "<br>"; // Salida: "Hola Mundo!"
-
-        $email = "usuario@@example.com";
-        $emailSanitizado = filter_var($email, FILTER_SANITIZE_EMAIL);
-        echo $emailSanitizado . "<br>"; // Salida: "usuario@example.com"
-
-        $url = "https://www.exa mple.com/test?name=<script>";
-        $urlSanitizada = filter_var($url, FILTER_SANITIZE_URL);
-        echo $urlSanitizada. "<br>"; // Salida: "https://www.example.com/test?name="
-
-		
+        function eliminarTildes($cadena){
+            $cadena = strtolower($cadena);
+            $arrayConTildes = ['á','é','í','ó','ú'];
+            $arraySinTildes = ['a','e','i','o','u'];
+            $cadena = str_replace($arrayConTildes, $arraySinTildes, $cadena);
+            return $cadena;
+        }
         
+        //EJERCICIO 3
+        /*
+        Dado una cadena chequear si la variable contiene una direccion de correo válida.
+        Una direccion de correo valida debe tener presente los caracteres '@' y '.' 
+        Si la direccion es valida escrive por un lado el nombre de usuario y por otro 
+        el dominio.
+        */
+        $email = "raulcano@gmail.com";
+        //$email2 = "raul.cano@gmail.com";
+        //$email3 = "raul.cano@gmailcom";
+        //$email4 = "raul.canogmail.com";
+        //$email4 = "raul.canogmail.com@";
+        //$email4 = "";
+        $posicionDeLaArroba = strpos($email,'@'); //posicion @ desde la izquierda
+        $posicionDelPunto = strrpos($email,'.'); //posicion del . desde la derecha
+
+        //if(strpos($email,"@") !== false && strpos($email,".") !== false){
+        if($posicionDeLaArroba !== false 
+            && $posicionDelPunto !== false 
+            && $posicionDeLaArroba < $posicionDelPunto
+            && $posicionDeLaArroba > 0){
+            // Si es valida extraer el usuario y el dominio
+            $usuario = substr(($email), 0, $posicionDeLaArroba);
+            $dominio = substr($email, $posicionDeLaArroba+1);
+
+            echo "Nombre de Usuario: {$usuario} <br>";
+            echo "Nombre de Usuario: " . $usuario. " <br>";
+            echo "Nombre de Dominio: {$dominio} <br>";
+        }else{
+            echo "Dirección de correo no válida";
+        }
+
+        
+
+
+
         ?>
 </body>
 </html>

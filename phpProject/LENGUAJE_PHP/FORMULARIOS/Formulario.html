@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilos/estilo1.css">
+    <title>Mi primer Formulario</title>
+</head>
+<body>
+    
+<!-- action: Indica el archivo al que se van a traspasar los datos del Formulario
+ -->
+ <!-- method: metodo por el que vamos a recoger los datos y enviarlos a otra pagina o a mi misma pagina. -->
+
+    <!-- <form action="datos.php" method="post"> -->
+    <form action="datos.php" method="get">
+        <!-- <input>, <select>, <textarea> etc... -->
+   
+
+         <!-- Cuadros de texto -->
+          <p>
+            <label for="nombre"> Nombre</label>
+            <input type="text" id="nombre" name="nombre" Value="Algo por defecto">
+          </p>
+
+          <!-- Otra manera de asociar controles a un label -->
+
+          <p>
+            <label>Apellido 1
+                <input type="text" id="apellido1" name="apellido1" value="">
+            </label>
+          </p>
+
+          <!-- Botón genérico -->
+          <button type="submit" name="accion" value="guardar">GUARDAR</button>
+          <button type="submit" name="accion" value="borrar">BORRAR</button>
+
+          <!-- Cuadros de contraseñas 
+           Son como los cuadros de texto pero se introducen puntos o asteriscos -->
+           <p>
+            <label for="pass"> Contraseña</label> 
+            <input type="password" id="pass" name="pass">
+           </p>
+
+         <!-- Botón radio 
+          Permite seleccionar entre varias opciones
+          Todas tienen el mismo name solo cambia su valor-->
+           <p>Sexo:</p>
+           <p>
+            <input type="radio" name="sexo" value="hombre"> Hombre <br>
+            <input type="radio" name="sexo" value="mujer"> Mujer <br>
+           </p>
+           
+           <!-- Casillas de verificación (checkbox) -->
+           <p>Leguajes de programación</p>
+           <input type="checkbox" name="lenguaje[]" value="PHP"> PHP <br>
+           <input type="checkbox" name="lenguaje[]" value="JAVA"> JAVA <br>
+           <input type="checkbox" name="lenguaje[]" value="C"> C <br>
+           <input type="checkbox" name="lenguaje[]" value="C++"> C++ <br>
+
+
+           <!-- Cuandros combinados -->
+           <!-- Permite usar listas de opciones de las cuales puede elegir una -->
+           <p>
+            <select name="provicia">
+                <option value="MU">Murcia</option>
+                <option value="BCN">Barcelona</option>
+            </select>
+           </p>
+
+           <!-- Cuandros de seleccion de archivos -->
+            <!-- Son controles type=file se muestra un boton que al pulsarlo pues nos abre un selector de archivos -->
+             <p>
+                Selecciones un archivo
+                <input type="file" name="archivo">
+             </p>
+
+             <!-- Cuadros de texto multilinea (TextArea) -->
+              <!-- Permite incluir texto en varias lineas 
+              Atributos:
+              rows = altura
+              cols = ancho -->
+<p>
+    Ecribe aqui tu texto <br>
+    <textarea rows="10" cols="40" name="texto"></textarea><br>
+</p>
+
+
+           <!-- Boton enviar 
+            Sirve para la comunicaciones entre el formulario y la pagina que recibe la información
+         -->
+        <p><input type="submit" value="ENVIAR"></p>
+
+ <!-- Boton Reset 
+            Anular los datos introducidos en loscontroles del formulario.
+            Deja los controles en su estado inicial
+         -->
+         <p><input type="reset" value="RESET"></p>           
+
+    </form>
+
+
+</body>
+</html>
