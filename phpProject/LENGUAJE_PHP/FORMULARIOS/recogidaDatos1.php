@@ -16,6 +16,19 @@ if($_POST){
         $nombreGet = $_POST["nombre"];
         echo "<br>Nombre:" . $nombreGet;
     }
+    echo "<hr>";
+    $claveRepetida = $_POST["clave"]["repetida"];
+
+    echo $claveRepetida;
+
+    echo "<hr>";
+
+     print_r($_POST["clave"]);
+    
+    echo "<hr>";
+
+    echo "<br> El numero de días es " . $_POST["num_dias"];
+    echo "<br> El numero de horas es  " . $_POST["num_horas"];
 }else{
     echo "POST VACÍO";
 }

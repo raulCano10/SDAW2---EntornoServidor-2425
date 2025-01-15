@@ -20,11 +20,37 @@
         <label for="num dias">Numero de dias</label>
         <input type="text" id="num dias" name="num dias">
 
-        <label for="num.horas">Numero de dias</label>
+        <label for="num.horas">Numero de horas</label>
         <input type="text" id="num.horas" name="num.horas">
+
+        <h1>Pasar variables a fichero php desde enlaces</h1>
+        <p>Selecciona un producto para ver sus detalles</p>
+        <ul>
+            <li><a href="productos.php?id=1&nombre=Camisa&precio=25"> Camisa (25€)</a></li>
+            <li><a href="productos.php?id=2&nombre=Pantalon&precio=40"> Pantalón (40€)</a></li>
+            <li><a href="productos.php?id=3&nombre=Zapatos&precio=100"> Zapatos (100€)</a></li>                     
+        </ul>
 
         <input type="submit" value="ENVIAR">
 
+        <label for="clave_original">Clave original:</label>
+        <input type="password" id="clave_original" name="clave[original]">
+
+        <label for="clave_repetida">Clave repetida:</label>
+        <input type="password" id="clave_repetida" name="clave[repetida]">
+
+        <!-- Selector multiple -->
+        <label form="provincias">Selecciona tus provincias favoritas</label>
+        <p>
+            <select multiple id="provincias" name="provincias[]">
+                <option value="MU">Murcia</option>
+                <option value="BCN">Barcelona</option>
+                <option value="MA">Madrid</option>
+                <option value="LO">Lorca</option>
+            </select>
+        </p>
+
+        
     </form>
 </body>
 </html>
