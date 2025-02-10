@@ -11,11 +11,23 @@ class ProductoController{
     }
 
     public function gestionarProducto($codigo,$nombre,$precio,$cantidad): string{
-        $mensaje = "";
-        //LOGICA
-        //$this->productoModel->insertar();
+        try{
+            $mensaje = "";
+
+            if(!$codigo){
+                return "FALTA EL CODIGO!!! Sin codigo no hago nada";
+            }
+
+            $productoExistente = $this->productoModel->getProducto($codigo);
+
+            //LOGICA
+            //$this->productoModel->insertar();
+            
+            return $mensaje;
+        }catch(Exception $ex){       
+            return "ERROR al gestionar el producto: " . $ex->getMessage();
+        }
         
-        return $mensaje;
     }
 
     
