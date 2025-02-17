@@ -12,5 +12,7 @@ class ProductoController{
         $productos = $this->productoModel->obtenerProductos();
         return $productos;
     }
+
+    
 }
 ?>

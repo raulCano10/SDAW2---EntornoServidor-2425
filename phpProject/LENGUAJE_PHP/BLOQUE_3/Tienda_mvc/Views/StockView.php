@@ -46,6 +46,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'
         </select>
         <button type="submit">Consultar Stock</button>
     </form>
+
+    <?php if(!empty($stock)){ ?>        
+        <h3>STOCK DISPONIBLE</h3>
+        <table border="1">
+            <tr>
+                <th>Tienda</th>
+                <th>Producto</th>
+                <th>Unidades</th>
+            </tr>
+        <?php foreach($stock as $registroStock){ ?>
+            <tr>
+                <td><?php echo $registroStock['tienda'];?></td>
+                <td><?php echo $registroStock['NombreCortoProducto'];?></td>
+                <td><?php echo $registroStock['unidades'];?></td>
+            </tr>
+         <?php } ?>
+        </table>   
+        <?php }?>
 </body>
 </html>
 

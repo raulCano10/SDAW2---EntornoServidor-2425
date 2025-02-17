@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="View/StockView.php">STOCK</a>
-    <!-- <a href="View/ProdcutoView.php">PRODUCTO</a> -->
+    <a href="Views/StockView.php">STOCK</a>
+    <a href="Views/ProductoView.php">PRODUCTO</a>
 </body>
 </html>

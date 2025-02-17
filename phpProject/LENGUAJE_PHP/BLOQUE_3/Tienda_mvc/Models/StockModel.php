@@ -25,7 +25,7 @@ class StockModel{
     }
 
     public function obtenerStockPorCodigoProducto($codigoProducto){
-        $consulta = "SELECT t.nombre, p.nombre, s.unidades
+        $consulta = "SELECT t.nombre as tienda, p.nombre_corto as NombreCortoProducto, s.unidades as unidades
         FROM stock AS s
         INNER JOIN tienda AS t ON s.tienda = t.cod
         INNER JOIN producto AS p ON s.producto = p.cod 
