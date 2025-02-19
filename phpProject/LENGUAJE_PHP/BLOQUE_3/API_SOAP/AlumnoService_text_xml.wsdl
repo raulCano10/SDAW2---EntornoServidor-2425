@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AlumnoService"
+             targetNamespace="http://localhost/soap_server"
+             xmlns:tns="http://localhost/soap_server"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xsd:schema targetNamespace="http://localhost/soap_server">
+            <xsd:element name="insertarAlumno">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nombre" type="xsd:string"/>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="edad" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="insertarAlumnoResponse" type="xsd:string"/>
+
+            <xsd:element name="obtenerAlumno">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="id" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="obtenerAlumnoResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="xml" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="actualizarAlumno">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="nombre" type="xsd:string"/>
+                        <xsd:element name="edad" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="actualizarAlumnoResponse" type="xsd:string"/>
+
+            <xsd:element name="borrarAlumno">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="email" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="borrarAlumnoResponse" type="xsd:string"/>
+        </xsd:schema>
+    </types>
+
+    <message name="insertarAlumnoRequest">
+        <part name="parameters" element="tns:insertarAlumno"/>
+    </message>
+    <message name="insertarAlumnoResponse">
+        <part name="parameters" element="tns:insertarAlumnoResponse"/>
+    </message>
+
+    <message name="obtenerAlumnoRequest">
+        <part name="parameters" element="tns:obtenerAlumno"/>
+    </message>
+    <message name="obtenerAlumnoResponse">
+        <part name="parameters" element="tns:obtenerAlumnoResponse"/>
+    </message>
+
+    <message name="actualizarAlumnoRequest">
+        <part name="parameters" element="tns:actualizarAlumno"/>
+    </message>
+    <message name="actualizarAlumnoResponse">
+        <part name="parameters" element="tns:actualizarAlumnoResponse"/>
+    </message>
+
+    <message name="borrarAlumnoRequest">
+        <part name="parameters" element="tns:borrarAlumno"/>
+    </message>
+    <message name="borrarAlumnoResponse">
+        <part name="parameters" element="tns:borrarAlumnoResponse"/>
+    </message>
+
+    <portType name="AlumnoServicePortType">
+        <operation name="insertarAlumno">
+            <input message="tns:insertarAlumnoRequest"/>
+            <output message="tns:insertarAlumnoResponse"/>
+        </operation>
+        <operation name="obtenerAlumno">
+            <input message="tns:obtenerAlumnoRequest"/>
+            <output message="tns:obtenerAlumnoResponse"/>
+        </operation>
+        <operation name="actualizarAlumno">
+            <input message="tns:actualizarAlumnoRequest"/>
+            <output message="tns:actualizarAlumnoResponse"/>
+        </operation>
+        <operation name="borrarAlumno">
+            <input message="tns:borrarAlumnoRequest"/>
+            <output message="tns:borrarAlumnoResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="AlumnoServiceBinding" type="tns:AlumnoServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="insertarAlumno">
+            <soap:operation soapAction="urn:insertarAlumno"/>
+            <input>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </output>
+        </operation>
+        <operation name="obtenerAlumno">
+            <soap:operation soapAction="urn:obtenerAlumno"/>
+            <input>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </output>
+        </operation>
+        <operation name="actualizarAlumno">
+            <soap:operation soapAction="urn:actualizarAlumno"/>
+            <input>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </output>
+        </operation>
+        <operation name="borrarAlumno">
+            <soap:operation soapAction="urn:borrarAlumno"/>
+            <input>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://localhost/soap_server" />
+            </output>
+        </operation>
+    </binding>
+
+    <service name="AlumnoService">
+        <documentation>Servicio SOAP para gestión de alumnos con soporte para Content-Type text/xml.</documentation>
+        <port name="AlumnoServicePort" binding="tns:AlumnoServiceBinding">
+            <soap:address location="http://localhost/soap_server/server.php"/>
+        </port>
+    </service>
+
+</definitions>
