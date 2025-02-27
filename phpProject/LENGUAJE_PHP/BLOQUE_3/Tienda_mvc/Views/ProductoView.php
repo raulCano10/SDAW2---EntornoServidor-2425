@@ -9,6 +9,39 @@ require_once __DIR__ . "/../Controllers/FamiliaController.php";
 
 $familiaController = new FamiliaController();
 $familias = $familiaController->obtenerFamilias();
+
+//CLIENTE SOAP
+$options = [
+    'location' => 'http://localhost/soap_server/server.php',
+    'uri' => 'http://localhost/soap_server/',
+    'trace' => 1,
+    'exceptions' => true
+];
+
+try{
+
+    $clienteSOAP = new SoapClient(null,$options);
+
+    $clienteSOAP->obtenerProductos();
+
+    echo "<pre>";
+    print_r($clienteSOAP);
+    echo "</pre>";
+
+}catch(Exception $ex){
+    echo "ERROR en la llamada SOAP " . $ex->getMessage();
+}
+
+
+$productoController = new ProductoController();
+$productosSOAP = $productoController->obtenerProductosSOAP();
+
+echo "<pre>";
+print_r($productos);
+echo "</pre>";
+
+$productoController->obtenerProductosSOAPcliente($clienteSOAP);
+
 ?>
 
 <!DOCTYPE html>
