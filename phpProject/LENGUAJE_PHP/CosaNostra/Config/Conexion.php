@@ -13,7 +13,7 @@ class Conexion {
                 $dns = "mysql:host=" . self::$server . ";dbname=" . self::$db . ";charset=utf8";
                 self::$conexion = new PDO($dns, self::$user, self::$pass);
                 self::$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                self::$conexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+                //self::$conexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
              }
              catch(PDOException $ex){

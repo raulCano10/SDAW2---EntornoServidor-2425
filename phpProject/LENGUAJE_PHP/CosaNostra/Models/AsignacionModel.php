@@ -20,6 +20,8 @@ class AsignacionModel{
         $stmt->execute([$idTraidor]);
     }
 
+    
+
 
 }
 
