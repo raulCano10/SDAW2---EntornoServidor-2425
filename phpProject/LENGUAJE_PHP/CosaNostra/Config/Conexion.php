@@ -7,7 +7,7 @@ class Conexion {
     private static $db = 'cosa_nostra';
     public static $conexion = null;
 
-    public static function connect(){
+    public static function connectPDO(){
         if(self::$conexion === null){
             try{
                 $dns = "mysql:host=" . self::$server . ";dbname=" . self::$db . ";charset=utf8";

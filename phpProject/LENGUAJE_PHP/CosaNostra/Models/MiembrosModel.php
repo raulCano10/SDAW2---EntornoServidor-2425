@@ -7,7 +7,7 @@ class MiembrosModel{
     private $conexion;
 
     public function __construct(){
-        $this->conexion = Conexion::connect();
+        $this->conexion = Conexion::connectPDO();
     }
 
     public function getMiembros(){

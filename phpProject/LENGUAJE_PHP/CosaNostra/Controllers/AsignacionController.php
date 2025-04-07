@@ -2,7 +2,7 @@
 require_once __DIR__ . "/../Models/AsignacionModel.php";
 require_once __DIR__ . "/../Intefaces/IAsignacion.php";
 
-class Asignacioncontroller implements IAsignacion{
+class AsignacionController implements IAsignacion{
     private $model;
     private $conexion;
     public function __construct(){
@@ -10,7 +10,13 @@ class Asignacioncontroller implements IAsignacion{
     }
 
     public function asignarOperacion($id_miembro, $id_operacion){
-
+        if(!$this->model->existeAsignacion($id_miembro, $id_operacion)){
+            $this->model->asignarOperacion($id_miembro, $id_operacion);
+            return true;
+        }
+        
+        return false;
+       
     }
 
     public function procesarTraidores($traidores){
