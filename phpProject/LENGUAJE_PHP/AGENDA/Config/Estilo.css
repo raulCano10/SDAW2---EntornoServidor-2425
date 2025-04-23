@@ -1,0 +1,158 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 20px;
+    text-align: left;
+}
+
+th {
+    background-color: #1976d2;
+    color: white;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e3f2fd;
+}
+
+td button {
+    margin-right: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+td button[name="editarContacto"] {
+    background-color: #4caf50;
+    color: white;
+}
+
+td button[name="editarContacto"]:hover {
+    background-color: #45a049;
+}
+
+td button[name="borrarContacto"] {
+    background-color: #f44336;
+    color: white;
+}
+
+td button[name="borrarContacto"]:hover {
+    background-color: #d32f2f;
+}
+
+.contenedor-crear {
+    width: 90%;
+    margin: 0 auto 10px auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-crear {
+    background-color: #1976d2;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-crear:hover {
+    background-color: #125ea7;
+}
+
+/* .formulario-contacto {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+} */
+
+
+.formulario-contacto {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px 30px 30px 30px; /* top, right, bottom, left */
+    padding-right: 60px; /* sobrescribe solo el derecho */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.formulario-contacto .form-group {
+    margin-bottom: 20px;
+}
+
+.formulario-contacto label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.formulario-contacto input[type="text"],
+.formulario-contacto input[type="email"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.formulario-contacto input[type="text"]:focus,
+.formulario-contacto input[type="email"]:focus {
+    border-color: #1976d2;
+    background-color: #fff;
+    outline: none;
+}
+
+.formulario-contacto button,input[type="submit"] {
+    background-color: #1976d2;
+    color: white;
+    font-size: 16px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario-contacto button, input[type="submit"]:hover {
+    background-color: #125ea7;
+}
