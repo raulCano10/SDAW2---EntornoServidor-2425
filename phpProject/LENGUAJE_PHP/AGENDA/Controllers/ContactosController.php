@@ -13,6 +13,10 @@ class ContactosController{
         return $this->contactosModel->getContactos();
     }
 
+    
+    public function getContacto($id){
+        return $this->contactosModel->getContacto($id);
+    }
 
 }
 ?>

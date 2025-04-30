@@ -20,5 +20,14 @@ class ContactosModel{
         // $arrayAsocContactos = $resultado->fetch_all(MYSQLI_ASSOC);
         // return $arrayAsocContactos;
     }
+
+    public function getContacto($id){
+        $consulta = "SELECT * FROM contactos WHERE id_contacto = $id";
+        //$consulta = "SELECT * FROM contactos WHERE id_contacto = ?";
+        $stmt = $this->conexion->prepare($consulta);
+        //$stmt->bind_param("i",$id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
