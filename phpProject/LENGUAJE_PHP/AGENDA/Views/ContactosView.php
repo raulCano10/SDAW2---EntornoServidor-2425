@@ -3,7 +3,7 @@
 require_once __DIR__ . "/../Controllers/ContactosController.php";
 
 //Probamos que conectamos correctamente con la Base de Datos.
- $conn = new Conexion();
+// $conn = new Conexion();
 // $result = $conn->getConexion();
 // $conexion = (new Conexion())->getConexion();
 
@@ -36,7 +36,7 @@ if(isset($_POST['editarContacto'])){
 <?php
 }elseif(isset($_POST['borrarAceptar'])){
 //LLamaremos a controlador de contactos controler y le pediremos que borre el contacto
-//LLamaremos a controlador de contactos controler y le pediremos que borre el contacto
+
 }
 // elseif(isset($_POST['borrarCancelar'])){
 //     //NO HACEMOS NADA
@@ -84,12 +84,12 @@ if(isset($_POST['editarContacto'])){
             </thead>
             <tbody>
                 <?php foreach($listaContactos as $contacto){?>
-                    <tr>
-                        <td>
+                    <tr><td>
                             <!-- TODO: INCLUIR BOTONES DE BORRAR Y EDITAR -->
                              <button type="submit" name="editarContacto" value="<?php echo $contacto['id_contacto']?>">Editar</button>
                              <button type="submit" name="borrarContacto" value="<?php echo $contacto['id_contacto']?>">Borrar</button>
                         </td>
+                        
                         <td><?php echo $contacto['id_contacto']?></td>
                         <td><?php echo $contacto['nombre']?></td>
                         <td><?php echo $contacto['email']?></td>

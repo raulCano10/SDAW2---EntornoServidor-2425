@@ -29,5 +29,23 @@ class ContactosModel{
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function insertarContacto($nombre,$email,$telefono,$direccion){
+        //$consulta = "INSERT INTO contactos (nombre, email, tlf, direccion) VALUES ($nombre,$email,$telefono,$direccion)";
+        $consulta = "INSERT INTO contactos (nombre, email, tlf, direccion) VALUES (?,?,?,?)";
+        $stmt = $this->conexion->prepare($consulta);
+        $stmt->bind_param("ssss",$nombre,$email,$telefono,$direccion);
+        return $stmt->execute();
+
+    }
+
+    public function actualizarContacto($id,$nombre,$email,$telefono,$direccion){
+        //$consulta = "UPDATE contactos SET nombre = $nombre , email = $email , tlf = $telefono, direccion = $direccion WHERE id_contacto = $id";
+        $consulta = "UPDATE contactos SET nombre = ? , email = ? , tlf = ?, direccion = ? WHERE id_contacto = ?";
+        $stmt = $this->conexion->prepare($consulta);
+        $stmt->bind_param("ssssi",$nombre,$email,$telefono,$direccion,$id);
+        return $stmt->execute();
+  
+    }
 }
 ?>
